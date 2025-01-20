@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+import Navbar from './components/navbar'
+import { ThirdwebProvider } from "thirdweb/react";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -27,7 +30,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        {/* ref.https://portal.thirdweb.com/react/v5/getting-started#Setup%20the%20ThirdwebProvider */}
+        <ThirdwebProvider>
+          <Navbar />
+          {children}
+        </ThirdwebProvider>
       </body>
     </html>
   );
